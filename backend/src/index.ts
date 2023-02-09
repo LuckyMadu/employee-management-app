@@ -4,7 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 const swaggerJsDoc = require("swagger-jsdoc");
-const swaggerUi = require("swagger-ui-express");
+const swaggerUI = require("swagger-ui-express");
 
 import connectDB from "./config/db";
 import { commonResponse } from "./utils/response";
@@ -70,12 +70,13 @@ const options = {
       },
     ],
   },
-  apis: ["./src/modules/employee/routers/employee_route.ts"],
+  apis: ["./src/modules/healthcheck/routers/healthcheck_route.ts", "./src/modules/employee/routers/employee_route.ts"],
 };
 
 const specs = swaggerJsDoc(options);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs, { explorer: true }));
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs, { explorer: true }));
 
+// app listener
 app.listen(process.env.PORT || PORT, () =>
   console.log(`Backend server is running on port ${PORT}`)
 );

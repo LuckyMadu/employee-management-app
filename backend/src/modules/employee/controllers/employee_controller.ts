@@ -4,11 +4,9 @@ import { commonResponse } from "../../../utils/response";
 import * as commonResponseType from "../../../static/static.json";
 import EmployeeService from '../services/employee_service'
 
-const viewAllEmployeesController = async (req: Express.Request, res: Express.Response) => {
+const getAllEmployeeController = async (req: Express.Request, res: Express.Response) => {
   try {
-    const data = await EmployeeService.viewAllEmployeesControllerService(req,res);
-
-    console.log("data---------",data);
+    const data = await EmployeeService.getAllEmployeeService(req,res);
 
     const response = commonResponse(
       commonResponseType.RESPONSE_SUCCESS.TRUE,
@@ -27,5 +25,5 @@ const viewAllEmployeesController = async (req: Express.Request, res: Express.Res
 };
 
 export default {
-  viewAllEmployeesController,
+  getAllEmployeeController,
 };

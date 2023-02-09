@@ -3,7 +3,7 @@ import Express from "express";
 import { Employee } from "../../../models/Employee";
 import commonResponseType from '../../../static/static.json'
 
-const viewAllEmployeesControllerRepo = async (req: Express.Request, res: Express.Response) => {
+const getAllEmployeeRepo = async (req: Express.Request, res: Express.Response) => {
   try {
     const data = await Employee.find({});
     return data;
@@ -15,5 +15,5 @@ const viewAllEmployeesControllerRepo = async (req: Express.Request, res: Express
 };
 
 export default {
-  viewAllEmployeesControllerRepo,
+  getAllEmployeeRepo,
 };

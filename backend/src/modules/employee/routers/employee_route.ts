@@ -1,5 +1,5 @@
 import express from 'express';
-import employeeController from '../controllers/employee_controller'
+import EmployeeController from '../controllers/employee_controller'
 
 const router = express.Router();
 
@@ -21,7 +21,7 @@ const router = express.Router();
  *         description: Some server error!
  *
  */
-router.get('/list', employeeController.viewAllEmployeesController);
+router.get('/list', EmployeeController.getAllEmployeeController);
 
 const employeeRouter = router
 export {employeeRouter}
