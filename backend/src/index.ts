@@ -60,21 +60,21 @@ const options = {
         "Backend server build with nodeJS and mongoDB using REST API",
       contact: {
         name: "Lahiru Amaratunga",
-        email: "lahiruamarathunga526@gmail.com",
+        email: "lahirua@swivelgroup.com.au",
       },
     },
-
     servers: [
       {
-        url: "http://localhost:3000/",
+        url: "http://localhost:3000",
         description: "Development server",
       },
     ],
   },
-  apis: ["./modules/employee/routers/employee_route"],
+  apis: ["./src/modules/employee/routers/employee_route.ts"],
 };
+
 const specs = swaggerJsDoc(options);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs, { explorer: true }));
 
 app.listen(process.env.PORT || PORT, () =>
   console.log(`Backend server is running on port ${PORT}`)

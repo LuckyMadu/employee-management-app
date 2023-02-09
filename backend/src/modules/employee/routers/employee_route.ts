@@ -5,20 +5,21 @@ const router = express.Router();
 
 /**
  * @swagger
- * /employee/list
- *  get:
- *   summary: get all employee list
- *   tags: [employee]
- *   description: get all employee list
+ * tags:
+ *   name: Employees
+ *   description: The employee managing API
+ * /employee/list:
+ *   get:
+ *     summary: Get all employee list
+ *     tags: [Employee]
+ *     responses:
+ *       200:
+ *         description: Employee list fetched successfully!
+ *       400:
+ *         description: Employee list fetched failed!
+ *       500:
+ *         description: Some server error!
  *
- *
- *   responses:
- *    200:
- *     description: Employee list retrieve successfully
- *    400:
- *      description: Employee list retrieve failed
- *    500:
- *     description : error
  */
 router.get('/list', employeeController.viewAllEmployeesController);
 
