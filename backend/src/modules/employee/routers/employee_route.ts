@@ -108,9 +108,9 @@ router.put("/:empId", EmployeeController.updateEmployeeController);
  *            $ref: '#/components/schemas/employee'
  *     responses:
  *       200:
- *         description: Employee updated successfully!
+ *         description: Employee deleted successfully!
  *       400:
- *         description: Employee updated failed!
+ *         description: Employee deleted failed!
  *       500:
  *         description: Some server error!
  *

@@ -1,4 +1,3 @@
-import type { ErrorRequestHandler } from "express";
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -7,11 +6,11 @@ const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUI = require("swagger-ui-express");
 
 import connectDB from "./config/db";
-import { commonResponse } from "./utils/response";
-import commonResponseType from "./static/static.json";
+
 import { employeeRouter } from "./modules/employee/routers/employee_route";
 import { healthcheckRouter } from "./modules/healthcheck/routers/healthcheck_route";
-import { options } from "./utils/swaggerDoc";
+import { options } from "./utils/swaggerOptions";
+import { errorHandler } from "./utils/errorHandler";
 
 //defined port
 const PORT = 3000;
@@ -26,31 +25,17 @@ connectDB();
 // enable cors
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-//health check API
+// health check route
 app.use("/", healthcheckRouter);
-// Employee route
+// employee route
 app.use("/employee", employeeRouter);
-
-// error handling function
-const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
-  // render the error page
-  let response = commonResponse(
-    commonResponseType.RESPONSE_SUCCESS.FALSE,
-    {},
-    commonResponseType.RESPONSE_MESSAGES.INTERNAL_SERVER_ERROR,
-    {}
-  );
-  return res
-    .status(commonResponseType.HTTP_RESPONSE.HTTP_BAD_REQUEST)
-    .json(response);
-};
 
 // error handler middleware
 app.use(errorHandler);
 
 //swagger documentation
-//swagger options
 const specs = swaggerJsDoc(options);
 app.use(
   "/api-docs",
