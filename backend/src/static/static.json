@@ -11,8 +11,9 @@
   },
   "RESPONSE_MESSAGES": {
     "INTERNAL_SERVER_ERROR": "Internal Server Error | Invalid Request",
-    "USER_REGISTER_SUCCESS": "User registered successfully",
-    "USER_REMOVE_SUCCESS": "User deleted successfully"
+    "EMPLOYEE_FETCH_SUCCESS": "Employee list fetched successfully",
+    "EMPLOYEE_REGISTER_SUCCESS": "Employee registered successfully",
+    "EMPLOYEE_REMOVE_SUCCESS": "User deleted successfully"
   },
   "LOGGER": {
     "INFO": "info",

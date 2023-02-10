@@ -11,6 +11,7 @@ import { commonResponse } from "./utils/response";
 import commonResponseType from "./static/static.json";
 import { employeeRouter } from "./modules/employee/routers/employee_route";
 import { healthcheckRouter } from "./modules/healthcheck/routers/healthcheck_route";
+import { options } from "./utils/swaggerDoc";
 
 //defined port
 const PORT = 3000;
@@ -50,31 +51,12 @@ app.use(errorHandler);
 
 //swagger documentation
 //swagger options
-const options = {
-  definition: {
-    openapi: "3.0.0",
-    info: {
-      title: "Employee Management Project",
-      version: "1.0.0",
-      description:
-        "Backend server build with nodeJS and mongoDB using REST API",
-      contact: {
-        name: "Lahiru Amaratunga",
-        email: "lahirua@swivelgroup.com.au",
-      },
-    },
-    servers: [
-      {
-        url: "http://localhost:3000",
-        description: "Development server",
-      },
-    ],
-  },
-  apis: ["./src/modules/healthcheck/routers/healthcheck_route.ts", "./src/modules/employee/routers/employee_route.ts"],
-};
-
 const specs = swaggerJsDoc(options);
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs, { explorer: true }));
+app.use(
+  "/api-docs",
+  swaggerUI.serve,
+  swaggerUI.setup(specs, { explorer: true })
+);
 
 // app listener
 app.listen(process.env.PORT || PORT, () =>

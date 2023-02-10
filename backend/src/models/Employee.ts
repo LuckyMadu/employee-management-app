@@ -13,23 +13,23 @@ const employeeSchema = new Schema<IEmployee>(
   {
     first_name: {
       type: String,
-      require: true,
+      required: [true, "please add first name"],
     },
     last_name: {
       type: String,
-      require: true,
+      required: [true, "please add last name"],
     },
     email: {
       type: String,
-      require: true,
+      required: [true, "please add email"],
     },
     number: {
       type: String,
-      require: true,
+      required: [true, "please add phone number"],
     },
     gender: {
       type: String,
-      require: true,
+      required: [true, "please add gender"],
     },
     photo: {
       type: String,
