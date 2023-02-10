@@ -1,5 +1,6 @@
 import express from "express";
 import EmployeeController from "../controllers/employee_controller";
+import { addEmployeeValidation } from "../validation/employee_validation";
 
 const router = express.Router();
 
@@ -47,7 +48,11 @@ router.get("/list", EmployeeController.getAllEmployeeController);
  *         description: Some server error!
  *
  */
-router.post("/", EmployeeController.addEmployeeController);
+router.post(
+  "/",
+  addEmployeeValidation,
+  EmployeeController.addEmployeeController
+);
 
 /**
  * @swagger
