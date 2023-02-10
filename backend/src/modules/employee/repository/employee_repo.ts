@@ -10,16 +10,22 @@ const addEmployeeRepo = async (requestBody: EmployeeDTO) => {
 };
 
 const updateEmployeeRepo = async (empId: string, requestBody: EmployeeDTO) => {
-  const data = await Employee.findOneAndUpdate(
+  return Employee.findOneAndUpdate(
     { id: empId },
     { $set: requestBody },
     { new: true }
   );
-  return data;
+};
+
+const deleteEmployeeRepo = async (empId: string) => {
+  return Employee.deleteOne({
+    id: empId,
+  });
 };
 
 export default {
   getAllEmployeeRepo,
   addEmployeeRepo,
   updateEmployeeRepo,
+  deleteEmployeeRepo,
 };

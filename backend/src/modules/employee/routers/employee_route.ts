@@ -60,7 +60,7 @@ router.post("/", EmployeeController.addEmployeeController);
  *     tags: [Employee]
  *     parameters:
  *       - in: path
- *         name: empId   # Note the name is the same as in the path
+ *         name: empId
  *         required: true
  *         schema:
  *           type: integer
@@ -82,6 +82,40 @@ router.post("/", EmployeeController.addEmployeeController);
  *
  */
 router.put("/:empId", EmployeeController.updateEmployeeController);
+
+/**
+ * @swagger
+ * tags:
+ *   name: Employee
+ *   description: Update employee
+ * /employee/{empId}:
+ *   delete:
+ *     summary: Delete employee
+ *     tags: [Employee]
+ *     parameters:
+ *       - in: path
+ *         name: empId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: The Employee ID
+ *     requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/employee'
+ *     responses:
+ *       200:
+ *         description: Employee updated successfully!
+ *       400:
+ *         description: Employee updated failed!
+ *       500:
+ *         description: Some server error!
+ *
+ */
+router.delete("/:empId", EmployeeController.deleteEmployeeController);
 
 const employeeRouter = router;
 export { employeeRouter };

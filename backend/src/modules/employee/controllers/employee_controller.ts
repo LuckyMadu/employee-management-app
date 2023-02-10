@@ -74,8 +74,31 @@ const updateEmployeeController = async (
   }
 };
 
+const deleteEmployeeController = async (
+  req: Express.Request,
+  res: Express.Response
+) => {
+  try {
+    const empId = req.params.empId;
+    const data = await EmployeeService.deleteEmployeeService(empId);
+
+    const response = commonResponse(
+      commonResponseType.RESPONSE_SUCCESS.TRUE,
+      { data },
+      commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_REMOVE_SUCCESS,
+      {}
+    );
+    res.status(commonResponseType.HTTP_RESPONSE.HTTP_SUCCESS).json(response);
+  } catch (err) {
+    res
+      .status(commonResponseType.HTTP_RESPONSE.HTTP_NOT_FOUND)
+      .json(commonResponseType.RESPONSE_MESSAGES.INTERNAL_SERVER_ERROR);
+  }
+};
+
 export default {
   getAllEmployeeController,
   addEmployeeController,
   updateEmployeeController,
+  deleteEmployeeController,
 };

@@ -10,9 +10,13 @@ const addEmployeeService = (requestBody: EmployeeDTO) =>
 // update employee
 const updateEmployeeService = (empId: string, requestBody: EmployeeDTO) =>
   EmployeeRepo.updateEmployeeRepo(empId, requestBody);
+// delete employee
+const deleteEmployeeService = (empId: string) =>
+  EmployeeRepo.deleteEmployeeRepo(empId);
 
 export default {
   getAllEmployeeService,
   addEmployeeService,
   updateEmployeeService,
+  deleteEmployeeService,
 };
