@@ -10,10 +10,8 @@ const addEmployeeRepo = async (requestBody: EmployeeDTO) => {
 };
 
 const updateEmployeeRepo = async (empId: string, requestBody: EmployeeDTO) => {
-  const data = await Employee.create(
-    {
-      _id: empId,
-    },
+  const data = await Employee.findOneAndUpdate(
+    { id: empId },
     { $set: requestBody },
     { new: true }
   );

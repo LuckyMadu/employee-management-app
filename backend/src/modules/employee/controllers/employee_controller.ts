@@ -60,11 +60,9 @@ const updateEmployeeController = async (
       requestBody
     );
 
-    console.log("data---------", data);
-
     const response = commonResponse(
       commonResponseType.RESPONSE_SUCCESS.TRUE,
-      data,
+      { data },
       commonResponseType.RESPONSE_MESSAGES.EMPLOYEE_UPDATE_SUCCESS,
       {}
     );
