@@ -1,35 +1,27 @@
-import Express from "express";
-
+import { EmployeeDTO } from "../../../DTO/Employee.dto";
 import { Employee } from "../../../models/Employee";
-import commonResponseType from "../../../static/static.json";
 
-const getAllEmployeeRepo = async (
-  req: Express.Request,
-  res: Express.Response
-) => {
-  try {
-    const data = await Employee.find({});
-    return data;
-  } catch (err) {
-    res
-      .status(commonResponseType.HTTP_RESPONSE.HTTP_INTERNAL_SERVER_ERROR)
-      .json(err);
-  }
+const getAllEmployeeRepo = async () => {
+  return Employee.find({});
 };
 
-const addEmployeeRepo = async (req: Express.Request, res: Express.Response) => {
-  try {
-    console.log("req---------", req);
-    const data = await Employee.create(req.body);
-    return data;
-  } catch (err) {
-    res
-      .status(commonResponseType.HTTP_RESPONSE.HTTP_INTERNAL_SERVER_ERROR)
-      .json(err);
-  }
+const addEmployeeRepo = async (requestBody: EmployeeDTO) => {
+  return Employee.create(requestBody);
+};
+
+const updateEmployeeRepo = async (empId: string, requestBody: EmployeeDTO) => {
+  const data = await Employee.create(
+    {
+      _id: empId,
+    },
+    { $set: requestBody },
+    { new: true }
+  );
+  return data;
 };
 
 export default {
   getAllEmployeeRepo,
   addEmployeeRepo,
+  updateEmployeeRepo,
 };

@@ -5,6 +5,9 @@ export const options = {
       schemas: {
         employee: {
           properties: {
+            id: {
+              type: "string",
+            },
             first_name: {
               type: "string",
             },
@@ -25,6 +28,7 @@ export const options = {
             },
           },
           example: {
+            id: 1,
             first_name: "Lahiru",
             last_name: "Amaratunga",
             email: "lahirua@swivelgroup.com.au",

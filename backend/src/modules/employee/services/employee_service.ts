@@ -1,12 +1,18 @@
 import Express from "express";
+import { EmployeeDTO } from "../../../DTO/Employee.dto";
 import EmployeeRepo from "../repository/employee_repo";
 
-const getAllEmployeeService = (req: Express.Request, res: Express.Response) =>
-  EmployeeRepo.getAllEmployeeRepo(req, res);
-const addEmployeeService = (req: Express.Request, res: Express.Response) =>
-  EmployeeRepo.addEmployeeRepo(req, res);
+// fetch all employees
+const getAllEmployeeService = () => EmployeeRepo.getAllEmployeeRepo();
+// add employee
+const addEmployeeService = (requestBody: EmployeeDTO) =>
+  EmployeeRepo.addEmployeeRepo(requestBody);
+// update employee
+const updateEmployeeService = (empId: string, requestBody: EmployeeDTO) =>
+  EmployeeRepo.updateEmployeeRepo(empId, requestBody);
 
 export default {
   getAllEmployeeService,
   addEmployeeService,
+  updateEmployeeService,
 };

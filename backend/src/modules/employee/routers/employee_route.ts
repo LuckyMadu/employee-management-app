@@ -38,7 +38,6 @@ router.get("/list", EmployeeController.getAllEmployeeController);
  *        application/json:
  *          schema:
  *            $ref: '#/components/schemas/employee'
- *
  *     responses:
  *       200:
  *         description: Employee added successfully!
@@ -49,6 +48,40 @@ router.get("/list", EmployeeController.getAllEmployeeController);
  *
  */
 router.post("/", EmployeeController.addEmployeeController);
+
+/**
+ * @swagger
+ * tags:
+ *   name: Employee
+ *   description: Update employee
+ * /employee/{empId}:
+ *   put:
+ *     summary: Update employee
+ *     tags: [Employee]
+ *     parameters:
+ *       - in: path
+ *         name: empId   # Note the name is the same as in the path
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: The Employee ID
+ *     requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/employee'
+ *     responses:
+ *       200:
+ *         description: Employee updated successfully!
+ *       400:
+ *         description: Employee updated failed!
+ *       500:
+ *         description: Some server error!
+ *
+ */
+router.put("/:empId", EmployeeController.updateEmployeeController);
 
 const employeeRouter = router;
 export { employeeRouter };
